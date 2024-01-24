@@ -63,6 +63,7 @@ const IssuerPage = () => {
     useEffect(() => {
         const createIssuerDid = async () => {
             const issuerDid = await DidIonMethod.create();
+            console.log(issuerDid)
             setIssuerDid(issuerDid);
         };
         createIssuerDid();
@@ -115,7 +116,7 @@ const IssuerPage = () => {
 
     return (
         <div style={styles.container}>
-            <h1 style={styles.header}>Issuer Page - Department of Motor Vehicles</h1>
+            <h1 style={styles.header}>Issuer Page - FAKE Department of Motor Vehicles</h1>
             <p onClick={toggleDIDView} style={{ cursor: 'pointer' }}>
                 DID: {displayDID}
             </p>
