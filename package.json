@@ -11,6 +11,7 @@
   "dependencies": {
     "@web5/credentials": "^0.4.1",
     "@web5/dids": "^0.2.4",
+    "axios": "^1.6.7",
     "crypto-browserify": "^3.12.0",
     "html2canvas": "^1.4.1",
     "i": "^0.3.7",
