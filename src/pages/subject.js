@@ -167,7 +167,7 @@ const SubjectPage = () => {
                         <p style={styles.credentialLabel}>Issue Date:</p>
                         <p style={styles.credentialDetail}>{credentialDetails.issueDate}</p>
                         <p style={styles.credentialLabel}>Legal Drinking Age</p>
-                        <p style={styles.credentialDetail}>{credentialDetails.expirationDate ? 'Yes' : 'No'}</p>
+                        <p style={styles.credentialDetail}>{credentialDetails.legalDrinkAge ? 'Yes' : 'No'}</p>
                         <p style={styles.credentialLabel}>Issued by:</p>
                         <p style={styles.credentialDetail}>The Fake DMV</p>
                     </div>
