@@ -53,36 +53,47 @@ const SubjectPage = () => {
             cursor: 'pointer',
         },
         credentialCardStyles: {
-            border: '1px solid #007bff',
-            boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2)',
+            border: '1px solid #ff69b4',
+            boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.1)',
             padding: '20px',
-            margin: '20px 0',
+            margin: '20px auto',
             borderRadius: '10px',
-            backgroundColor: '#f9f9f9',
+            backgroundColor: '#fff',
             color: '#333',
-            textAlign: 'center',
-            maxWidth: '300px',
-            margin: '20px auto'
+            textAlign: 'left',
+            maxWidth: '420px',
+            fontFamily: 'Segoe UI, sans-serif',
+            position: 'relative',
+            overflow: 'hidden', 
         },
         credentialDetail: {
-            fontSize: '16px',
+            color: '#ff69b4',
             margin: '10px 0',
-            color: '#555',
-            fontWeight: 'bold'
+            fontSize: '16px',
+            color: '#ff69b4'
         },
         credentialLabel: {
-            fontSize: '14px',
-            color: '#007bff',
-            margin: '5px 0'
-        }
+            fontSize: '16px',
+            margin: '5px 0',
+            textTransform: 'uppercase',
+            color: '#555',
+            fontWeight: 'bold',
+        },
+        watermark: {
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            opacity: '0.1',
+            fontSize: '3em',
+            color: '#ff69b4',
+        }        
     };
 
     const [jwt, setJWT] = useState('');
     const [subjectDID, setSubjectDid] = useState('');
     const [isDIDExpanded, setIsDIDExpanded] = useState(false);
-    const [compressedJwt, setCompressedJwt] = useState('');
     const [credentialDetails, setCredentialDetails] = useState({})
-    const [imageURL, setImageURL] = useState('');
     const [isUploading, setIsUploading] = useState(false);
     
     useEffect(() => {
@@ -190,11 +201,12 @@ const SubjectPage = () => {
             {jwt && (
                 <div>
                     <div id="print" style={styles.credentialCardStyles}>
+                        <div style={styles.watermark}>@BLACKGIRLBYTES</div>
                         <p style={styles.credentialLabel}>Type:</p>
                         <p style={styles.credentialDetail}>{credentialDetails.type }</p>
                         <p style={styles.credentialLabel}>Issue Date:</p>
                         <p style={styles.credentialDetail}>{credentialDetails.issueDate}</p>
-                        <p style={styles.credentialLabel}>Legal Drinking Age</p>
+                        <p style={styles.credentialLabel}>Legal Drinking Age:</p>
                         <p style={styles.credentialDetail}>{credentialDetails.legalDrinkAge ? 'Yes' : 'No'}</p>
                         <p style={styles.credentialLabel}>Issued by:</p>
                         <p style={styles.credentialDetail}>The Fake DMV</p>
