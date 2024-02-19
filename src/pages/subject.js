@@ -168,6 +168,8 @@ const SubjectPage = () => {
                         <p style={styles.credentialDetail}>{credentialDetails.issueDate}</p>
                         <p style={styles.credentialLabel}>Legal Drinking Age</p>
                         <p style={styles.credentialDetail}>{credentialDetails.expirationDate ? 'Yes' : 'No'}</p>
+                        <p style={styles.credentialLabel}>Issued by:</p>
+                        <p style={styles.credentialDetail}>The Fake DMV</p>
                     </div>
                 {/* <QRCode value={compressedJwt} size={256} /> */}
                 <button style={styles.button} onClick={handleDownloadImage}>Download Credential</button>
