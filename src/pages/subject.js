@@ -4,6 +4,8 @@ import QRCode from 'qrcode.react';
 import { deflate } from 'zlibjs/bin/zlib_and_gzip.min.js';
 import { VerifiableCredential } from '@web5/credentials';
 
+import html2canvas from 'html2canvas';
+
 const SubjectPage = () => {
 
     const styles = {
@@ -130,6 +132,21 @@ const SubjectPage = () => {
     };
 
     const displayDID = isDIDExpanded ? subjectDID.did : `${subjectDID.did?.substring(0, 20)}...`;
+
+    const handleDownloadImage = async () => {
+        const element = document.getElementById('print'),
+        canvas = await html2canvas(element),
+        data = canvas.toDataURL('image/jpg'),
+        link = document.createElement('a');
+    
+        link.href = data;
+        link.download = 'downloaded-image.jpg';
+    
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      };
+
     return (
         <div style={styles.container}>
             <h1 style={styles.header}>Subject Page - You</h1>
@@ -144,7 +161,7 @@ const SubjectPage = () => {
             </label>
             {jwt && (
                 <div>
-                    <div style={styles.credentialCardStyles}>
+                    <div id="print" style={styles.credentialCardStyles}>
                         <p style={styles.credentialLabel}>Type:</p>
                         <p style={styles.credentialDetail}>{credentialDetails.type }</p>
                         <p style={styles.credentialLabel}>Issue Date:</p>
@@ -152,7 +169,8 @@ const SubjectPage = () => {
                         <p style={styles.credentialLabel}>Legal Drinking Age</p>
                         <p style={styles.credentialDetail}>{credentialDetails.expirationDate ? 'Yes' : 'No'}</p>
                     </div>
-                <QRCode value={compressedJwt} size={256} />
+                {/* <QRCode value={compressedJwt} size={256} /> */}
+                <button style={styles.button} onClick={handleDownloadImage}>Download Credential</button>
                 <div style={styles.jwtContainer}>
                     <h2>Signed JWT:</h2>
                     <pre style={styles.pre}>{jwt}</pre>
